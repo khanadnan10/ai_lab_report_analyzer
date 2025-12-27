@@ -1,15 +1,14 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 
 class CustomElevatedButton extends StatefulWidget {
   final String text;
-  final void Function()? onPressed;
+  final Function()? onPressed;
   final bool showShadow;
 
   const CustomElevatedButton({
     super.key,
     required this.text,
-    this.onPressed,
+    required this.onPressed,
     this.showShadow = false,
   });
 
@@ -37,8 +36,11 @@ class _CustomElevatedButtonState extends State<CustomElevatedButton> {
                     ],
             ),
             child: ElevatedButton(
-              onPressed: widget.onPressed,
+              onPressed: () {
+                widget.onPressed?.call();
+              },
               style: ElevatedButton.styleFrom(
+                elevation: 0,
                 minimumSize: Size.fromHeight(50),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadiusGeometry.circular(8),

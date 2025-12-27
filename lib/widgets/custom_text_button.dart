@@ -6,9 +6,11 @@ class CustomTextButton extends StatelessWidget {
     super.key,
     required this.text,
     required this.onPressed,
+    this.enabledBorders = false,
   });
   final String text;
   final void Function()? onPressed;
+  final bool enabledBorders;
 
   @override
   Widget build(BuildContext context) {
@@ -17,10 +19,10 @@ class CustomTextButton extends StatelessWidget {
         Expanded(
           child: TextButton(
             onPressed: onPressed,
-
             style: TextButton.styleFrom(
               minimumSize: Size.fromHeight(50),
               shape: RoundedRectangleBorder(
+                side: enabledBorders ? BorderSide(width: 0.5) : BorderSide.none,
                 borderRadius: BorderRadiusGeometry.circular(8),
               ),
             ),

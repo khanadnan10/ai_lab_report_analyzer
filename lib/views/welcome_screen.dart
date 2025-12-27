@@ -1,6 +1,8 @@
+import 'package:ai_lab_report_analyzer/utils/routes.dart';
 import 'package:ai_lab_report_analyzer/widgets/custom_elevated_button.dart';
 import 'package:ai_lab_report_analyzer/widgets/custom_text_button.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class WelcomeScreen extends StatefulWidget {
   const WelcomeScreen({super.key});
@@ -37,7 +39,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
               CustomElevatedButton(
                 text: 'Get Started',
                 showShadow: true,
-                onPressed: () {},
+                onPressed: () => context.push(AppRoutes.rGetStarted),
               ),
               CustomTextButton(text: 'Log In', onPressed: () {}),
             ],

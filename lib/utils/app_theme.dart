@@ -6,6 +6,7 @@ class AppTheme {
   static final _blueColor = Color(0xff137FEC);
   static final kLightTheme = ThemeData.light().copyWith(
     primaryColor: _blueColor,
+    scaffoldBackgroundColor: Colors.white,
     textTheme: GoogleFonts.poppinsTextTheme(),
     colorScheme: ColorScheme.light().copyWith(primary: _blueColor),
     elevatedButtonTheme: ElevatedButtonThemeData(
