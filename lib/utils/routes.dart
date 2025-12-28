@@ -1,3 +1,5 @@
+import 'package:ai_lab_report_analyzer/controller/auth_controller.dart';
+import 'package:ai_lab_report_analyzer/init.dart';
 import 'package:ai_lab_report_analyzer/views/get_started_screen.dart';
 import 'package:ai_lab_report_analyzer/views/login_screen.dart';
 import 'package:ai_lab_report_analyzer/views/sign_up_screen.dart';
@@ -11,6 +13,15 @@ class AppRoutes {
     observers: [AppRouteObserver()],
     overridePlatformDefaultLocation: true,
     initialLocation: rWelcome,
+    redirect: (context, state) {
+      print("state route: ${state.matchedLocation}");
+      final hasSession = serviceLocator<AuthController>().currentUserSession;
+      if (hasSession != null) {
+        // context.pushReplacement(location);
+        return '/login';
+      }
+      return null;
+    },
     routes: [
       GoRoute(path: rWelcome, builder: (context, state) => WelcomeScreen()),
       GoRoute(path: rGetStarted, builder: (context, state) => GetStarted()),

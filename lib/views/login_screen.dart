@@ -1,3 +1,4 @@
+import 'package:ai_lab_report_analyzer/utils/routes.dart';
 import 'package:ai_lab_report_analyzer/widgets/custom_text_field.dart';
 import 'package:ai_lab_report_analyzer/widgets/widgets.dart';
 import 'package:flutter/material.dart';
@@ -133,13 +134,16 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                     textAlign: .end,
                   ),
-                  Text(
-                    "Sign Up",
-                    style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                      fontWeight: FontWeight.w800,
-                      color: Colors.blue,
+                  GestureDetector(
+                    onTap: () => context.push(AppRoutes.rSignup),
+                    child: Text(
+                      "Sign Up",
+                      style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                        fontWeight: FontWeight.w800,
+                        color: Colors.blue,
+                      ),
+                      textAlign: .end,
                     ),
-                    textAlign: .end,
                   ),
                 ],
               ),

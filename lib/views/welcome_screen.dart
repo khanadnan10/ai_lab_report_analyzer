@@ -41,7 +41,10 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                 showShadow: true,
                 onPressed: () => context.push(AppRoutes.rGetStarted),
               ),
-              CustomTextButton(text: 'Log In', onPressed: () {}),
+              CustomTextButton(
+                text: 'Log In',
+                onPressed: () => context.push(AppRoutes.rLogin),
+              ),
             ],
           ),
         ),

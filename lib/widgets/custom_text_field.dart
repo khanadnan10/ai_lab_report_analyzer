@@ -32,7 +32,7 @@ class CustomTextField extends StatelessWidget {
           borderRadius: BorderRadius.circular(10),
         ),
         hintText: hintText,
-        hintStyle: TextStyle(color: Colors.grey.shade500),
+        hintStyle: TextStyle(color: Colors.grey.shade600),
       ),
     );
   }

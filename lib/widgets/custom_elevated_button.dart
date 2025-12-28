@@ -4,12 +4,14 @@ class CustomElevatedButton extends StatefulWidget {
   final String text;
   final Function()? onPressed;
   final bool showShadow;
+  final Color? color;
 
   const CustomElevatedButton({
     super.key,
     required this.text,
     required this.onPressed,
     this.showShadow = false,
+    this.color,
   });
 
   @override
@@ -41,6 +43,7 @@ class _CustomElevatedButtonState extends State<CustomElevatedButton> {
               },
               style: ElevatedButton.styleFrom(
                 elevation: 0,
+                backgroundColor: widget.color,
                 minimumSize: Size.fromHeight(50),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadiusGeometry.circular(8),

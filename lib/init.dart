@@ -1,3 +1,5 @@
+import 'package:ai_lab_report_analyzer/controller/auth_controller.dart';
+import 'package:ai_lab_report_analyzer/repository/remote_database.dart';
 import 'package:ai_lab_report_analyzer/utils/constants.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
@@ -7,10 +9,10 @@ import 'package:supabase_flutter/supabase_flutter.dart' as sb;
 final serviceLocator = GetIt.instance;
 
 Future<void> init() async {
-  /// env initialization
+  /// ENV
   await dotenv.load(fileName: '.env');
 
-  /// Register supabase
+  /// SUPABASE INIT
   final sb.Supabase supabase =
       await sb.Supabase.initialize(
         url: Constants.supabaseUrl,
@@ -26,10 +28,17 @@ Future<void> init() async {
         );
       });
 
-  /// service locator
   serviceLocator.registerLazySingleton(() {
     return supabase.client;
   });
 
-  ///
+  /// REPOSITORY
+  serviceLocator.registerFactory(
+    () => RemoteDatabase(serviceLocator<sb.SupabaseClient>()),
+  );
+
+  /// CONTROLLER
+  serviceLocator.registerSingleton(
+    AuthController(serviceLocator<RemoteDatabase>()),
+  );
 }
